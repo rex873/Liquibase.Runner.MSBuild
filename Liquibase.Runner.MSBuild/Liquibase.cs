@@ -21,15 +21,19 @@ namespace Liquibase.Runner.MSBuild
                 p.StartInfo.CreateNoWindow = true; //设置为false将会看到程序窗口 
                 p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden; //启动进程时窗口状态 
                 p.StartInfo.RedirectStandardOutput = true;
-                p.StartInfo.FileName = this.FileName; //如果a.bat在System32文件夹中，此处只需填写文件名即可
-                p.StartInfo.WorkingDirectory = Path.GetDirectoryName(FileName); //工作目录
+                p.StartInfo.FileName = Path.GetFullPath(this.FileName); //如果a.bat在System32文件夹中，此处只需填写文件名即可
+                p.StartInfo.WorkingDirectory = Path.Combine(Environment.CurrentDirectory, Path.GetDirectoryName(this.FileName)); //工作目录
                 p.Start();
+
+                Log.LogMessage("FileName:{0}", p.StartInfo.FileName);
+                Log.LogMessage("WorkingDirectory:{0}", p.StartInfo.WorkingDirectory);
 
                 var result = p.StandardOutput.ReadToEnd();
                 p.WaitForExit();
                 p.Close();
 
                 Log.LogMessage(result);
+                Log.LogMessage("Bat executed.");
 
                 return result.Contains("Liquibase Update Successful");
             }
