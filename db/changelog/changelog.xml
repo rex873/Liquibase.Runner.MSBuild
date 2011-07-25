@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <changeSet author="Sojin (generated)" id="1308823150812-1">
+        <createTable tableName="animal">
+            <column autoIncrement="true" name="Id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Eye" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-2">
+        <createTable tableName="answer">
+            <column autoIncrement="true" name="Id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="QuestionId" type="INT"/>
+            <column name="AnswererId" type="INT"/>
+            <column name="Content" type="VARCHAR(255)"/>
+            <column name="AnswerTime" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-3">
+        <createTable tableName="human">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-4">
+        <createTable tableName="question">
+            <column autoIncrement="true" name="Id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Title" type="VARCHAR(120)"/>
+            <column name="Content" type="VARCHAR(255)"/>
+            <column name="AskTime" type="DATETIME"/>
+            <column name="AskerId" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-5">
+        <createTable tableName="rabbit">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="leg" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-6">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="Id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-7">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="Id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="Account" type="VARCHAR(255)"/>
+            <column name="Password" type="VARCHAR(255)"/>
+            <column name="Status" type="INT"/>
+            <column name="RegisterTime" type="DATETIME"/>
+            <column name="AddressProvince" type="VARCHAR(255)"/>
+            <column name="AddressCity" type="VARCHAR(255)"/>
+            <column name="AddressStreet" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-8">
+        <createTable tableName="userdetail">
+            <column name="Id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="NickName" type="VARCHAR(255)"/>
+            <column name="Email" type="VARCHAR(200)"/>
+            <column name="Phone" type="VARCHAR(255)"/>
+            <column name="Gender" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-9">
+        <createTable tableName="usertorole">
+            <column name="RoleId" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UserId" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UsersPos" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RolesPos" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-10">
+        <addPrimaryKey columnNames="UserId, RolesPos" tableName="usertorole"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-11">
+        <addForeignKeyConstraint baseColumnNames="AnswererId" baseTableName="answer" baseTableSchemaName="FCSS" constraintName="FK2644B9D2B0717D4" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="user" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-12">
+        <addForeignKeyConstraint baseColumnNames="QuestionId" baseTableName="answer" baseTableSchemaName="FCSS" constraintName="FK2644B9D4ED72FE8" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="question" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-13">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="human" baseTableSchemaName="FCSS" constraintName="FKEBB3DA5D150850FB" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="animal" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-14">
+        <addForeignKeyConstraint baseColumnNames="AskerId" baseTableName="question" baseTableSchemaName="FCSS" constraintName="FK1BCDAE6BB3D90562" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="user" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-15">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="rabbit" baseTableSchemaName="FCSS" constraintName="FK8C54229B150850FB" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="animal" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-16">
+        <addForeignKeyConstraint baseColumnNames="Id" baseTableName="userdetail" baseTableSchemaName="FCSS" constraintName="FK6DF83DCFCC4B58A9" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="user" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-17">
+        <addForeignKeyConstraint baseColumnNames="RoleId" baseTableName="usertorole" baseTableSchemaName="FCSS" constraintName="FKEBAB96789D4D6144" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="role" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="Sojin (generated)" id="1308823150812-18">
+        <addForeignKeyConstraint baseColumnNames="UserId" baseTableName="usertorole" baseTableSchemaName="FCSS" constraintName="FKEBAB96782A6D9485" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="Id" referencedTableName="user" referencedTableSchemaName="FCSS" referencesUniqueColumn="false"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,2 @@
+..\Packages\Liquibase.2.0\liquibase --changeLogFile=changelog\diff-changelog.xml --url=jdbc:mysql://st002:3306/FCSS --username=root --password=you-may-2010 diffChangeLog --referenceUrl=jdbc:mysql://localhost:3306/FCSS --referenceUsername=root --referencePassword=123456
+

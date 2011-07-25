@@ -1,0 +1,1 @@
+F:\Youmay\WorkSpace\linqbase.runner.msbuild\packages\Liquibase.2.0\liquibase --changeLogFile=changelog\changelog.xml update
