@@ -17,7 +17,7 @@ namespace Liquibase.Runner.MSBuild.Test
         {
             var task = new Liquibase
             {
-                FileName = "update.bat"
+                FileName = "update.batasdasdasd"
             };
 
             var result = task.Execute();
